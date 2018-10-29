@@ -1,0 +1,7 @@
+<!--pages/test/test.wxml-->
+<view class='view'>
+<label>测试label1</label>
+<label>测试label1</label>
+<input class='input' placeholder='请输入信息'></input>
+</view>
+

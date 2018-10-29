@@ -1,0 +1,14 @@
+/* pages/test/test.wxss */
+input{
+  display: inline;
+  width: 50rpx;
+}
+.view{
+  background-color: yellow;
+  display: inline-block;
+  height: 50rpx;
+}
+label{
+  display: inline;
+  width: 50rpx;
+}
