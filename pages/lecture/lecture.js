@@ -1,26 +1,18 @@
-// pages/login/login.js
+// pages/lecture/lecture.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      avatarUrl:"",
-      nickname:"",
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    var that=this;
-      wx.getUserInfo({
-        success:function(e){
-          console.log(e);
-          that.setData({"avatarUrl":e.userInfo.avatarUrl})
-          that.setData({"nickname":e.userInfo.nickName})
-        }
-      })
+
   },
 
   /**
