@@ -1,9 +1,10 @@
 {
   "pages": [  
-  
+
+   "pages/communicate/communicate",
     "pages/lecture/lecture",
     "pages/project/project",
-    "pages/communicate/communicate",
+  
     "pages/mine/mine",
     "pages/index/index",
     "pages/logs/logs",

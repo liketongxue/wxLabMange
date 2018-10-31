@@ -1,2 +1,79 @@
 <!--pages/communicate/communicate.wxml-->
-<text>pages/communicate/communicate.wxml</text>
+<text>这是一个搜索框</text>
+
+<scroll-view class='page'>
+
+  <!-- 每一条 信息 -->
+  <view class='page_item' wx:for='{{communicateList}}' wx:for-item='communicateItem'>
+  
+    <view class='bodyView'>
+
+      <!--左边头像  -->
+        <view class='leftView'>
+          <image class='userImage' src='{{communicateItem.personImage}}'></image>
+       </view>
+
+
+       <!-- 右边View -->
+       <view class='rightView'>
+          
+          <!-- 用户名称 -->
+          <view class='name-view'>
+            <label class='name'>{{communicateItem.name}}</label>
+          </view>
+
+          <!-- 发表的内容 -->
+          <view class='content-view'>
+            <text class='content'>{{communicateItem.content}}</text>
+          </view>
+
+          <!-- 发表的图片 -->
+          <view class='photo-view'>
+            <view class='photo' wx:for='{{communicateItem.photos}}' style='width:{{photoWidth}}px;height:{{photoWidth}}px' wx:for-item='photoItem'>
+              <image bindtap='checkPhoto' data-photoUrl='{{photoItem}}' src='{{photoItem}}'style='width:{{photoWidth}}px;height:{{photoWidth}}px'></image>
+            </view>
+          </view>
+
+          <!-- 地理位置 -->
+          <view class='address-view'>
+            <label class='address'>{{communicateItem.address}}</label>
+          </view>
+
+          <!-- 时间、删除、点赞 -->
+          <view class='tdd-view'>
+            <label class='time'>{{communicateItem.time}}</label>
+            <button class='delete'>删除</button>
+            <image data-isShow='{{isShow}}' bindtap='TouchZanButton' src='../images/wxdiscuss.png'></image>
+          </view>
+
+
+          <!-- 点赞、评论框 -->
+          <view class='bottom-view'>
+            <!-- 点赞上方三角图标 -->
+            <view class='trigon-view'>
+              <image mode='aspectFill' class='trigon' src='../images/trigon.png'></image>
+            </view>
+            <!-- 点赞 -->
+            <view class='zan-view'>
+              <view class='zan-list' wx:for='{{communicateItem.zans}}' wx:for-item='zanItem'>
+                <label class='zan'>{{zanItem}}</label>
+              </view>
+            </view>
+              <!-- 点赞者与评论内容界线 -->
+              <view class='discuss-view'>
+                <view class='discuss' wx:for='{{communicateItem.discusses}}' wx:for-item='discuss'>
+                  <label class='discuss-user'>{{discuss.user}}</label>
+                  <label class='discuss-content'>{{discuss.content}}</label>
+                </view>
+              
+            </view>
+          </view>
+       </view>
+    </view>
+   
+
+  </view>
+
+  <!-- 评论按钮弹出框 -->
+  <view animation="{{animation}}" class='popupView'></view>
+</scroll-view>
