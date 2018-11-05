@@ -1,5 +1,16 @@
 <!--pages/communicate/communicate.wxml-->
-<text>这是一个搜索框</text>
+<view class='search-view' bindtap="suo">
+  <view class="search"> 
+    <view class="df search_arr"> 
+      <icon class="searchcion" size='20' type='search'></icon> 
+      <input class="" placeholder="请输入关键字" bindinput='sousuoInput'/>
+    </view>
+  </view>
+      <view class='sousuo' bindfocus='search'>搜索</view> 
+</view>
+
+
+
 
 <scroll-view class='page'>
 
@@ -24,9 +35,13 @@
 
           <!-- 发表的内容 -->
           <view class='content-view'>
-            <text class='content'>{{communicateItem.content}}</text>
+            <text class='content' selectable='true'>{{communicateItem.content}}</text>
           </view>
 
+          <!-- 链接 -->
+          <view class='content-url' bindtap='clickLink'>
+            <text class='url'>测试连接</text>
+          </view>
           <!-- 发表的图片 -->
           <view class='photo-view'>
             <view class='photo' wx:for='{{communicateItem.photos}}' style='width:{{photoWidth}}px;height:{{photoWidth}}px' wx:for-item='photoItem'>
@@ -42,8 +57,8 @@
           <!-- 时间、删除、点赞 -->
           <view class='tdd-view'>
             <label class='time'>{{communicateItem.time}}</label>
-            <button class='delete'>删除</button>
-            <image data-isShow='{{isShow}}' bindtap='TouchZanButton' src='../images/wxdiscuss.png'></image>
+            <button class='delete' bindtap='deleteItem'>删除</button>
+            <image data-isShow='{{isShow}}' bindtap='makeComment' data-commentIndex='{{index}}' src='../images/wxdiscuss.png'></image>
           </view>
 
 
@@ -54,7 +69,7 @@
               <image mode='aspectFill' class='trigon' src='../images/trigon.png'></image>
             </view>
             <!-- 点赞 -->
-            <view class='zan-view'>
+            <view class='zan-view' wx:if='{{false}}'>
               <view class='zan-list' wx:for='{{communicateItem.zans}}' wx:for-item='zanItem'>
                 <label class='zan'>{{zanItem}}</label>
               </view>
@@ -71,9 +86,38 @@
        </view>
     </view>
    
+  
 
+
+</view>
+
+  <!-- 悬浮按钮 -->
+  <view bindtap='addCommunicate' wx:if='{{floatButtonShow}}'>
+    <image class='addCommunicate' src='../images/addCommunicate.png'></image>
   </view>
 
+  <!-- 评论组件 -->
+  <view class='makeComment-view'  wx:if='{{commentShow}}'>
+    <input class='makeComment-input' cursor-spacing='15' focus='true' bindinput='commentInput' placeholder='评论' ></input>
+    <button class='makeComment-button' type='primary' wx:if="{{commentValue!=''}}" bindtap='sendComment'>发送</button>
+    <button class='makeComment-button' disabled='true' wx:else>发送</button>
+  </view>
+  
+
   <!-- 评论按钮弹出框 -->
-  <view animation="{{animation}}" class='popupView'></view>
+  <view animation="{{anim}}" class='popupView' style='top:{{popTop}}px;width:{{popWidth}}px;'>
+    
+    <view animation='{{animItem}}' class='popup-zan-view' wx:if='{{isShow}}' bindtap='clickZanItem' style='width:{{popupItemWidth}}px' hover-class='popupItemClick'>
+        <image src='../images/zan.png' class='popup-view' mode='aspectFill'></image>
+        <text class='popup-text' plain='true'>赞</text>
+    </view>
+
+    <view animation='{{animItem}}' class='popup-comment-view' wx:if='{{isShow}}' bindtap='clickCommentItem' style='width:{{popupItemWidth}}px' hover-class='popupItemClick'>
+      <image src='../images/comment.png' class='popup-view' ></image>
+      <text class='popup-text' plain='true'>评论</text>
+    </view>
+  </view>
+
+
+  
 </scroll-view>

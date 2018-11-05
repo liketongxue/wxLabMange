@@ -1,0 +1,33 @@
+<!--pages/addCommunicate/addCommuunicate.wxml-->
+<view class='page-view' style='height:{{screenHeight}}px'>
+
+<!-- 内容区 -->
+  <view class='content-view'>
+    <textarea placeholder='说些什么...' class='textarea-content'></textarea>
+  </view>
+
+  <view class='line'></view>
+<!-- 链接区 -->
+  <view class='link-view'>
+    <input placeholder='链接' disabled='true' class='text'></input>
+    <switch bindchange='switchChange'></switch>
+    <input wx:if='{{switchOpen}}' placeholder='请输入链接地址'></input>
+    <input wx:else placeholder='无链接' disabled='true' class='text right '></input>
+  </view>
+
+
+<!-- 图片区 -->
+  <view class='photo-view'>
+    <view class='photo' style='width:{{photoWidth}}px;height:{{photoWidth}}px;' bindtap='selectPic'>
+      <image src='../images/add.png' style='width:{{photoWidth}}px;height:{{photoWidth}}px;'></image>
+    </view>
+     <view class='photo' style='width:{{photoWidth}}px;height:{{photoWidth}}px;' wx:for='{{photos}}'>
+        <image src='{{item}}' style='width:{{photoWidth}}px;height:{{photoWidth}}px;'></image>
+    </view>
+    
+  </view>
+
+</view>
+
+  <!-- 提交按钮 -->
+  <button class='button' size='default' loading='{{loading}}' bindtap='sendCommunicate'>发表</button>

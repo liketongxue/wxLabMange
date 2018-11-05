@@ -1,0 +1,4 @@
+/* pages/checkLink/checkLink.wxss */
+web-view{
+  width: 700rpx;
+}

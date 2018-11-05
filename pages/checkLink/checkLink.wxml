@@ -1,0 +1,2 @@
+<!--pages/checkLink/checkLink.wxml-->
+<web-view src='{{checkedLink}}'></web-view>

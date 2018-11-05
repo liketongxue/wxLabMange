@@ -4,14 +4,14 @@
 		"ignore": []
 	},
 	"setting": {
-		"urlCheck": true,
+		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
 		"minified": true,
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.3.1",
+	"libVersion": "2.3.2",
 	"appid": "wx1211c816c101e617",
 	"projectname": "wxprojectSdu",
 	"debugOptions": {
@@ -36,12 +36,18 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 0,
+			"current": 1,
 			"list": [
 				{
 					"id": -1,
 					"name": "test",
-					"pathName": "pages/test/test"
+					"pathName": "pages/test/test",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "addCommunicate",
+					"pathName": "pages/addCommunicate/addCommuunicate"
 				}
 			]
 		}
